@@ -1,0 +1,42 @@
+[
+  {
+    "email": "carro@gmail.com",
+    "name": "Cajo",
+    "password": "123"
+  },
+  {
+    "id": "cus_Oa8ASFWgQLHP3r",
+    "email": "Timmy@gmail.com",
+    "name": "Timmy"
+  },
+  {
+    "id": "cus_Oa8pF9dJE2vPSE",
+    "email": "Luppe@gmail.com",
+    "name": "Luppe",
+    "password": "$2b$10$EAUqjbmEInm/D2pauyj2Su.8Ex361Th21FpzGmZ/AXWQUtphCU/hq"
+  },
+  {
+    "id": "cus_Oa8sDX91hvMQpK",
+    "email": "Lina@gmail.com",
+    "name": "Lina",
+    "password": "$2b$10$Ka67TN/hFv57tGHpg/NwfetXDHoCStXe5/VcVeYctnOu.R71XJFH."
+  },
+  {
+    "id": "cus_Oa8vkKQJ2FpwIp",
+    "email": "Majsan@gmail.com",
+    "name": "Majsan",
+    "password": "$2b$10$0ZJqO4QujskZaJ38RlZrH.w1doXPi0eUDe1WBMSh0e6RDRrzdLKxO"
+  },
+  {
+    "id": "cus_Oa8xKi9b31yLlO",
+    "email": "Majsan@gmail.com",
+    "name": "Majsan",
+    "password": "$2b$10$MTTZqESE6WZn96tB7yekTeBk4NR5j7gO7eQpxASCn9M9r23qYOAe."
+  },
+  {
+    "id": "cus_Oa8z4AKXReDUFB",
+    "email": "Kent@gmail.com",
+    "name": "Kent",
+    "password": "$2b$10$BeBueARSXvu0WGQwopyYQeZaDfB3h8xt4hBDRJ8z.Ty02P.RhKTFO"
+  }
+]

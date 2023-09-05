@@ -59,4 +59,26 @@ async function registerUser(req, res) {
   }
 }
 
-module.exports = { getAllUsers, registerUser };
+async function login(req, res) {
+  try {
+    const { email, password } = req.body;
+    fs.readFile(filePath, async (err, data) => {
+      if (err) {
+        return res.status(500).json("An error occurred");
+      }
+      const users = JSON.parse(data);
+      const user = users.find((user) => user.email === email);
+
+      if (!user || !(await bcrypt.compare(password, user.password))) {
+        return res.status(401).json("Wrong password or username");
+      }
+
+      req.session = user;
+      res.status(200).json(user);
+    });
+  } catch (error) {
+    console.log(error.message, "Det va inte bra ");
+  }
+}
+
+module.exports = { getAllUsers, registerUser, login };

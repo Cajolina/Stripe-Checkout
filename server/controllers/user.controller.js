@@ -18,11 +18,18 @@ function getAllUsers(req, res) {
 
 async function registerUser(req, res) {
   try {
+    //kolla på: om email redan finns på stripe skapa inte
+    // const incommningEmail = req.body.email;
+    // const exsistingStripeCustomer = await stripe.customers.search({
+    //   query: `email:'${incommningEmail}'`,
+    // });
+
+    // console.log(exsistingStripeCustomer.data[0].email);
+
     const customer = await stripe.customers.create({
       email: req.body.email,
       name: req.body.name,
     });
-    console.log(customer);
 
     const dataInput = req.body;
     const hashedPassword = await bcrypt.hash(dataInput.password, 10);
@@ -67,14 +74,14 @@ async function login(req, res) {
         return res.status(500).json("An error occurred");
       }
       const users = JSON.parse(data);
-      const user = users.find((user) => user.email === email);
+      const userInDb = users.find((user) => user.email === email);
 
-      if (!user || !(await bcrypt.compare(password, user.password))) {
+      if (!userInDb || !(await bcrypt.compare(password, userInDb.password))) {
         return res.status(401).json("Wrong password or username");
       }
 
-      req.session = user;
-      res.status(200).json(user);
+      req.session = userInDb;
+      res.status(200).json(userInDb);
     });
   } catch (error) {
     console.log(error.message, "Det va inte bra ");

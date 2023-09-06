@@ -79,9 +79,17 @@ async function login(req, res) {
       if (!userInDb || !(await bcrypt.compare(password, userInDb.password))) {
         return res.status(401).json("Wrong password or username");
       }
+      const user = userInDb;
+      user.id = userInDb.id;
+      delete user.password;
 
-      req.session = userInDb;
-      res.status(200).json(userInDb);
+      // // Check if user already is logged in
+      // if (req.session.id) {
+      //   return res.status(200).json(user);
+      // }
+      req.session = user;
+
+      res.status(200).json(user);
     });
   } catch (error) {
     console.log(error.message, "Det va inte bra ");

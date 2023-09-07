@@ -83,10 +83,6 @@ async function login(req, res) {
       user.id = userInDb.id;
       delete user.password;
 
-      // // Check if user already is logged in
-      // if (req.session.id) {
-      //   return res.status(200).json(user);
-      // }
       req.session = user;
 
       res.status(200).json(user);

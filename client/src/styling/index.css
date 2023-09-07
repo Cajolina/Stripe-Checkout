@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-height: 100vh;
+  background-color: rgb(19, 19, 19);
+  font-family: "Bebas Neue", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(230, 228, 228);
+}
+h1 {
+  font-size: 5rem;
+}
+
+button {
+  font-family: "Bebas Neue", sans-serif;
+}
+input {
+  font-family: "Bebas Neue", sans-serif;
+}
+.loginModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(68, 66, 66);
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.signInBtn {
+  cursor: pointer;
+}
+
+.exitBtnDiv {
+  display: flex;
+  justify-content: flex-end;
+}
+.exitBtn {
+  all: unset;
+  color: #ffffff; /* Lägg till textfärg efter behov */
+  font-size: 20px; /* Justera textstorleken efter behov */
+  cursor: pointer;
+}
+
+.registerHereBt {
+  cursor: pointer;
+  width: 30%;
+}
+
+.cartIcon {
+}

@@ -1,4 +1,5 @@
 import Login from "./Login";
+import ProductListComponent from "./ProductListComponent";
 
 function Home() {
   return (
@@ -6,6 +7,7 @@ function Home() {
       <Login />
       <h1>KOLSVART</h1>
       <h3>Products</h3>
+      <ProductListComponent />
     </div>
   );
 }

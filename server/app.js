@@ -3,6 +3,7 @@ const cors = require("cors");
 const cookieSession = require("cookie-session");
 
 const { userRouter } = require("./routes/user.router");
+const productRouter = require("./routes/product.router");
 const app = express();
 require("dotenv").config();
 app.use(express.json());
@@ -25,6 +26,6 @@ app.use(
 );
 
 //Routing
-app.use("/api", userRouter);
+app.use("/api", userRouter, productRouter);
 
 module.exports = { app };

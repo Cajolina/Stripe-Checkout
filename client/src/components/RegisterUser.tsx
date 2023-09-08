@@ -41,11 +41,7 @@ function RegisterUser() {
 
         <button
           onClick={() => {
-            registerUserFetch({
-              name,
-              email,
-              password,
-            });
+            registerUserFetch(name, email, password);
             closeDialog();
           }}
         >

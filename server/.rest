@@ -20,3 +20,6 @@ Content-Type: application/json
     "email": "Kent@gmail.com",
     "password": "1234"
 }
+
+###
+GET http://localhost:3000/api/products

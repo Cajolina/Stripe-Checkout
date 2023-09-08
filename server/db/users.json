@@ -170,5 +170,23 @@
     "email": null,
     "name": null,
     "password": "$2b$10$.cJj8WyKQEEQOMd1DWwmUegaYC6aA0u1XfDkBjUqFHNPQcOLqVyUW"
+  },
+  {
+    "id": "cus_ObAD0YQ3Bd665U",
+    "email": null,
+    "name": null,
+    "password": "$2b$10$fCYP5xK9fqNYKwb.vELj8.9CxnnDk8VQ3O1NrJi1KvdSwKQngJrgu"
+  },
+  {
+    "id": "cus_ObC5Cbn8A9gxTi",
+    "email": "hejhå@gmail.com",
+    "name": "Hejhå",
+    "password": "$2b$10$EGycyZCN1NnBPbKnI51OaevcBjlpdQu2RfNAw.hy72sqEcCTpQB26"
+  },
+  {
+    "id": "cus_ObD2TxkfyczQvy",
+    "email": "jghjghjghjghjjhg@gmail.com",
+    "name": "jhgj",
+    "password": "$2b$10$LzrFx9V5TeOKENJChAnvb..Cyayqlg0zOMBJ1iv0K59cd3bl7suIi"
   }
 ]

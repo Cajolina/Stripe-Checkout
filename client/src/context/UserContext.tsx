@@ -1,21 +1,18 @@
 import { PropsWithChildren, useState, createContext, useContext } from "react";
 
 export interface IUser {
-  id?: string;
-  name?: string;
+  id: string;
+  name: string;
   email: string;
   password: string;
 }
 
-export interface IUserEmailPass {
-  email: string;
-  password: string;
-}
+export type ICredentials = Omit<IUser, "id" | "name">;
 
 export interface IUserContext {
   loginUser: IUser | null;
   setLoginUser: React.Dispatch<React.SetStateAction<IUser | null>>;
-  fetchLoginUser: (user: IUserEmailPass) => Promise<string | void>;
+  fetchLoginUser: (user: ICredentials) => Promise<string | void>;
   email: string;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   password: string;
@@ -24,7 +21,11 @@ export interface IUserContext {
   setErrorMessage: React.Dispatch<React.SetStateAction<string>>;
   name: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
-  registerUserFetch: (user: IUser) => Promise<string | void>;
+  registerUserFetch: (
+    name: string,
+    email: string,
+    password: string
+  ) => Promise<string | void>;
   isDialogOpen: boolean;
   setIsDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
   openDialog: () => void;
@@ -74,7 +75,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     setName("");
   };
 
-  const fetchLoginUser = async (user: IUser) => {
+  const fetchLoginUser = async (user: ICredentials) => {
     try {
       const response = await fetch(`/api/login`, {
         method: "POST",
@@ -85,29 +86,36 @@ const UserProvider = ({ children }: PropsWithChildren) => {
       });
       const data = await response.json();
 
-      console.log(data);
+      console.log(data.email);
 
       if (!response.ok) {
         setErrorMessage("Wrong email or password");
+        // setShowRegister(true);
         return console.log("gick inte att fetcha");
       }
 
       //checka om det sparas i statet
       setLoginUser(data);
+
+      console.log(loginUser);
     } catch (error) {
       setErrorMessage("Couldn´t login");
       console.log(error);
     }
   };
 
-  const registerUserFetch = async (userInputValue: IUser) => {
+  const registerUserFetch = async (
+    name: string,
+    email: string,
+    password: string
+  ) => {
     try {
       const response = await fetch("/api/registerUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userInputValue),
+        body: JSON.stringify({ name, email, password }),
       });
       const data = await response.json();
       console.log(data);

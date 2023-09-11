@@ -53,56 +53,6 @@ async function registerUser(req, res) {
     return res.status(500).send("An error occurred");
   }
 }
-// async function registerUser(req, res) {
-//   try {
-//     //kolla på: om email redan finns på stripe skapa inte
-//     // const incommningEmail = req.body.email;
-//     // const exsistingStripeCustomer = await stripe.customers.search({
-//     //   query: `email:'${incommningEmail}'`,
-//     // });
-
-//     // console.log(exsistingStripeCustomer.data[0].email);
-
-//     const customer = await stripe.customers.create({
-//       email: req.body.email,
-//       name: req.body.name,
-//     });
-
-//     const dataInput = req.body;
-//     const hashedPassword = await bcrypt.hash(dataInput.password, 10);
-
-//     fs.readFile(filePath, (err, data) => {
-//       if (err) {
-//         res.status(404).send("Couldn´t register user");
-//         return;
-//       }
-//       const users = JSON.parse(data);
-//       const user = users.find((user) => user.email == req.body.email);
-//       if (user) {
-//         res.status(404).send("Email already exists");
-//       }
-
-//       const newUser = {
-//         id: customer.id,
-//         email: customer.email,
-//         name: customer.name,
-//         password: hashedPassword,
-//       };
-//       users.push(newUser);
-
-//       fs.writeFile(filePath, JSON.stringify(users, null, 2), (err) => {
-//         if (err) {
-//           console.log(err);
-//           res.status(404).send("Couldn´t write to file");
-//           return;
-//         }
-//         res.status(201).send(users);
-//       });
-//     });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// }
 
 async function login(req, res) {
   try {

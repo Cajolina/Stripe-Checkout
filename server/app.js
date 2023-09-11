@@ -4,6 +4,7 @@ const cookieSession = require("cookie-session");
 
 const { userRouter } = require("./routes/user.router");
 const productRouter = require("./routes/product.router");
+const { orderRouter } = require("./routes/order.router");
 const app = express();
 require("dotenv").config();
 app.use(express.json());
@@ -26,6 +27,6 @@ app.use(
 );
 
 //Routing
-app.use("/api", userRouter, productRouter);
+app.use("/api", userRouter, productRouter, orderRouter);
 
 module.exports = { app };

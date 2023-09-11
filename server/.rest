@@ -23,3 +23,13 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/api/products
+
+###
+
+POST http://localhost:3000/api/create_checkout_session
+Content-Type: "application/json"
+
+{
+    "product": "price_1NnzEmJVqYzYPd485rLo1BiG",
+    "quantity": 1,
+}

@@ -1,12 +1,13 @@
-import Login from "./Login";
+import Header from "./Header";
 import ProductListComponent from "./ProductListComponent";
 
 function Home() {
   return (
     <div>
-      <Login />
+      <Header />
+
       <h1>KOLSVART</h1>
-      <h3>Products</h3>
+
       <ProductListComponent />
     </div>
   );

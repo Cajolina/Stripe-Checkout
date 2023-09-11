@@ -11,7 +11,8 @@ export interface IProduct {
   name: string;
   description: string;
   price: number;
-  image: [];
+  image: string;
+  default_price: string;
 }
 
 interface IProductContext {

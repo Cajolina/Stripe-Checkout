@@ -1,4 +1,5 @@
 import { PropsWithChildren, useState, createContext, useContext } from "react";
+import { useCheckoutContext } from "./CheckoutContext";
 
 export interface IUser {
   id: string;
@@ -63,6 +64,8 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  const { setCheckoutErrorMessage } = useCheckoutContext();
+
   //modal login/register logic
   const openDialog = () => {
     setIsDialogOpen(true);
@@ -96,7 +99,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
       //checka om det sparas i statet
       setLoginUser(data);
-
+      setCheckoutErrorMessage("");
       console.log(loginUser);
     } catch (error) {
       setErrorMessage("Couldn´t login");

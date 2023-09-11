@@ -19,12 +19,30 @@ a:visited {
   color: rgb(230, 228, 228);
 }
 h1 {
-  font-size: 5rem;
+  font-size: 10rem;
+}
+
+h2 {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 3rem;
 }
 
 button {
   font-family: "Bebas Neue", sans-serif;
+  font-size: 1.7rem;
 }
+
+.discountBanner {
+  background-color: black;
+  color: #c6c6c6;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
 input {
   font-family: "Bebas Neue", sans-serif;
 }
@@ -59,4 +77,10 @@ input {
 }
 
 .cartIcon {
+  font-size: 2rem;
+}
+
+.productImg {
+  max-width: 300px;
+  max-height: 300px;
 }

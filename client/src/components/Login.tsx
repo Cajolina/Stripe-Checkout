@@ -1,10 +1,11 @@
 import { useUserContext } from "../context/UserContext";
 import { useState } from "react";
 import RegisterUser from "./RegisterUser";
-import { FaCartShopping } from "react-icons/fa6";
+
 import { BsPersonFill } from "react-icons/bs";
+
 import { IoMdClose } from "react-icons/io";
-import { Link } from "react-router-dom";
+
 function Login() {
   const {
     fetchLoginUser,
@@ -12,10 +13,9 @@ function Login() {
     setEmail,
     password,
     email,
-    loginUser,
-    isDialogOpen,
-
     openDialog,
+    isDialogOpen,
+    loginUser,
     closeDialog,
 
     errorMessage,
@@ -42,11 +42,6 @@ function Login() {
           <button>logout</button>
         </div>
       )}
-      <Link to={"/cart"}>
-        <span className="cartIcon">
-          <FaCartShopping />
-        </span>
-      </Link>
 
       <dialog className="loginModal" open={isDialogOpen} onClose={closeDialog}>
         <div>

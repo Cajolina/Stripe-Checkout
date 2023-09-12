@@ -70,7 +70,10 @@ async function login(req, res) {
       // const user = userInDb;
       // user.id = userInDb.id;
       // delete user.password;
-
+      // Check if user already is logged in
+      if (req.session.id) {
+        return res.status(200).json(userInDb);
+      }
       req.session = userInDb;
 
       res.status(200).json(userInDb);
@@ -80,4 +83,19 @@ async function login(req, res) {
   }
 }
 
-module.exports = { getAllUsers, registerUser, login };
+async function logout(req, res) {
+  if (!req.session.id) {
+    return res.status(400).json("Cannot logout when you are not logged in");
+  }
+  req.session = null;
+  res.status(204).json(null);
+}
+
+async function authorize(req, res) {
+  if (!req.session.id) {
+    return res.status(401).json("You are not logged in");
+  }
+  res.status(200).json(req.session);
+}
+
+module.exports = { getAllUsers, registerUser, login, authorize, logout };

@@ -17,6 +17,7 @@ function Login() {
     isDialogOpen,
     loginUser,
     closeDialog,
+    logoutUser,
 
     errorMessage,
   } = useUserContext();
@@ -39,7 +40,7 @@ function Login() {
       ) : (
         <div>
           <p>inloggad som: {loginUser.name}</p>
-          <button>logout</button>
+          <button onClick={logoutUser}>logout</button>
         </div>
       )}
 

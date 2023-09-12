@@ -5,12 +5,16 @@ interface ICheckoutContext {
   handleCheckout: () => void;
   checkoutErrorMessage: string;
   setCheckoutErrorMessage: React.Dispatch<React.SetStateAction<string>>;
+  isPaymentVerified: boolean;
+  verifyPayment: () => void;
 }
 
 const CheckoutContext = createContext<ICheckoutContext>({
   handleCheckout: () => {},
   checkoutErrorMessage: "",
   setCheckoutErrorMessage: () => {},
+  isPaymentVerified: false,
+  verifyPayment: () => {},
 });
 
 export const useCheckoutContext = () => useContext(CheckoutContext);
@@ -18,6 +22,7 @@ export const useCheckoutContext = () => useContext(CheckoutContext);
 const CheckoutProvider = ({ children }: PropsWithChildren<object>) => {
   const { cart } = useCartContext();
   const [checkoutErrorMessage, setCheckoutErrorMessage] = useState("");
+  const [isPaymentVerified, setIsPaymentVerified] = useState(false);
 
   async function handleCheckout() {
     console.log(cart);
@@ -35,13 +40,39 @@ const CheckoutProvider = ({ children }: PropsWithChildren<object>) => {
 
         return;
       }
-      const { url } = await response.json();
+      const { url, sessionId } = await response.json();
+      localStorage.setItem("session-id", sessionId);
       window.location = url;
     } catch (error) {
       setCheckoutErrorMessage("You must be logged in to proceed to checkout");
       console.log(error);
     }
   }
+
+  const verifyPayment = async () => {
+    try {
+      const sessionId = localStorage.getItem("session-id");
+      const response = await fetch("api/verify_session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({ sessionId }),
+      });
+      const { verified } = await response.json();
+      //nått åt detta håll. flödet är det viktiga
+      if (verified) {
+        setIsPaymentVerified(true);
+        localStorage.removeItem("session-id");
+      } else {
+        setIsPaymentVerified(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <CheckoutContext.Provider
@@ -49,6 +80,8 @@ const CheckoutProvider = ({ children }: PropsWithChildren<object>) => {
           handleCheckout,
           checkoutErrorMessage,
           setCheckoutErrorMessage,
+          isPaymentVerified,
+          verifyPayment,
         }}
       >
         {children}

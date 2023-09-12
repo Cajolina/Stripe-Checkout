@@ -86,6 +86,10 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     setName("");
   };
 
+  useEffect(() => {
+    authorizeUser();
+  }, []);
+
   const fetchLoginUser = async (user: ICredentials) => {
     try {
       const response = await fetch(`/api/login`, {
@@ -105,7 +109,6 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         return console.log("gick inte att fetcha");
       }
 
-      //checka om det sparas i statet
       setLoginUser(data);
       setCheckoutErrorMessage("");
       console.log(loginUser);
@@ -129,7 +132,6 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         body: JSON.stringify({ name, email, password }),
       });
       const data = await response.json();
-      console.log(data);
       setLoginUser(data);
       if (!response.ok) {
         setErrorMessage("Gick inte att skapa");
@@ -160,29 +162,22 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     }
   }
 
-  // useEffect(() => {
-  //   async function authorizeUser() {
-  //     try {
-  //       if (loginUser) {
-  //         console.log("is logged in");
-  //       } else {
-  //         const response = await fetch("/api/authorize");
-  //         if (response.ok) {
-  //           const data = await response.json();
-  //           setLoginUser(data);
-  //         } else {
-  //           setLoginUser(null);
-  //           console.log("Unexpected response from server");
-  //         }
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   authorizeUser();
-  // }, [loginUser]);
+  const authorizeUser = async () => {
+    try {
+      const response = await fetch("/api/authorize");
+      if (response.status === 200) {
+        const data = await response.json();
+        console.log(data);
 
-  //
+        setLoginUser(data);
+      } else {
+        setLoginUser(null);
+      }
+    } catch (error) {
+      console.log(error, "gick inte att fetcha");
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{

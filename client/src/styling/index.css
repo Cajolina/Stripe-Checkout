@@ -30,6 +30,12 @@ h3 {
   font-size: 3rem;
 }
 
+.headerName {
+  text-decoration: none; /* Ta bort eventuell understrykning */
+  color: black;
+  cursor: default;
+}
+
 button {
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.7rem;
@@ -83,4 +89,11 @@ input {
 .productImg {
   max-width: 300px;
   max-height: 300px;
+}
+
+.orderCard {
+  border: 2px solid #757474;
+}
+.productInCartImg {
+  max-width: 100px;
 }

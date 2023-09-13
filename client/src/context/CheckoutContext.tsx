@@ -25,8 +25,8 @@ const CheckoutProvider = ({ children }: PropsWithChildren<object>) => {
   const [isPaymentVerified, setIsPaymentVerified] = useState(false);
 
   async function handleCheckout() {
-    console.log(cart);
     setCheckoutErrorMessage("");
+
     try {
       const response = await fetch("api/create_checkout_session", {
         method: "POST",

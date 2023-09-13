@@ -5,6 +5,8 @@ import RegisterUser from "./RegisterUser";
 import { BsPersonFill } from "react-icons/bs";
 
 import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { useOrderContext } from "../context/OrderContext";
 
 function Login() {
   const {
@@ -21,6 +23,8 @@ function Login() {
 
     errorMessage,
   } = useUserContext();
+
+  const { getUserOrders } = useOrderContext();
 
   const [showRegister, setShowRegister] = useState(false);
 
@@ -40,7 +44,13 @@ function Login() {
       ) : (
         <div>
           <p>inloggad som: {loginUser.name}</p>
-          <button onClick={logoutUser}>logout</button>
+          <Link to={"/"}>
+            <button onClick={logoutUser}>logout</button>
+          </Link>
+
+          <Link to={"/userorders"}>
+            <button onClick={getUserOrders}>Userprofile</button>
+          </Link>
         </div>
       )}
 

@@ -194,5 +194,11 @@
     "email": "cajolina@gmail.com",
     "name": "Cajo",
     "password": "$2b$10$idXvyiRjvC0d0flzGieT3uX99OYS72NRYAXO9qyP/8Vsa.61wbp2K"
+  },
+  {
+    "id": "cus_Od6XBmWzlNKALu",
+    "email": "plopp@gmail.com",
+    "name": "Plopp",
+    "password": "$2b$10$f5dWc51nAohnrkDUnEJ4r.XtX8cxGRr2HChdPGTz1VBnSKjNAFwkW"
   }
 ]

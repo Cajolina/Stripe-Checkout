@@ -1,11 +1,12 @@
-// import { useCartContext } from "../context/CartContext";
+import { useCartContext } from "../context/CartContext";
 import { useCheckoutContext } from "../context/CheckoutContext";
 
 import Login from "./Login";
 
 function Cart() {
   const { handleCheckout, checkoutErrorMessage } = useCheckoutContext();
-  // const { cart } = useCartContext();
+  const { productsInCart, totalSum } = useCartContext();
+
   return (
     //lista allt i min cart
     <div>
@@ -16,13 +17,18 @@ function Cart() {
       )}
 
       <button onClick={handleCheckout}>To checkout</button>
-      {/* <div>
-        {cart.map((cartItem) => (
-          <div key={cartItem.product}>
-            <h2>cartItem.product.name</h2>
+      <div>
+        {productsInCart.map((product) => (
+          <div key={product.id}>
+            <h3>{product.name}</h3>
+            <img className="productInCartImg" src={product.image} alt="" />
+            <p>{product.price / 100} </p>
+            <h3>Quantity: {product.quantity}</h3>
+            <p> total: {(product.price / 100) * product.quantity} </p>
           </div>
         ))}
-      </div> */}
+        <h3>Totalsum : {totalSum}</h3>
+      </div>
     </div>
   );
 }

@@ -38,6 +38,7 @@ export interface IUserContext {
   openDialog: () => void;
   closeDialog: () => void;
   logoutUser: () => void;
+  // getUserOrders: () => void;
 }
 
 const defaultValues = {
@@ -58,6 +59,7 @@ const defaultValues = {
   openDialog: () => {},
   closeDialog: () => {},
   logoutUser: () => {},
+  // getUserOrders: async () => Promise.resolve(),
 };
 
 const UserContext = createContext<IUserContext>(defaultValues);
@@ -178,6 +180,16 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  // const getUserOrders = async () => {
+  //   try {
+  //     const response = await fetch(`/api/getOrder`);
+  //     const data = await response.json();
+  //     console.log("Get user orders:", data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   return (
     <UserContext.Provider
       value={{
@@ -198,6 +210,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         openDialog,
         closeDialog,
         logoutUser,
+        // getUserOrders,
       }}
     >
       {children}

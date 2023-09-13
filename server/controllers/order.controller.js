@@ -5,8 +5,10 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const CLIENT_URL = "http://localhost:5173";
 
+// const ordersData = fs.readFileSync(filePath, 'utf-8');
+// const orders = JSON.parse(ordersData);
+
 async function createCheckoutSession(req, res) {
-  console.log("req.body:", req.body);
   try {
     const session = await stripe.checkout.sessions.create({
       line_items: req.body.map((item) => {
@@ -31,7 +33,6 @@ async function createCheckoutSession(req, res) {
 
 async function verifySession(req, res) {
   try {
-    console.log(typeof req.body.sessionId);
     const session = await stripe.checkout.sessions.retrieve(req.body.sessionId);
 
     if (session.payment_status !== "paid") {
@@ -49,6 +50,10 @@ async function verifySession(req, res) {
         email: session.customer_details.email,
       },
       products: line_items.data.map((item) => {
+        const price = item.price.unit_amount / 100;
+        const quantity = item.quantity;
+        const totalPrice = price * quantity;
+
         return {
           product: item.description,
           quantity: item.quantity,
@@ -56,9 +61,13 @@ async function verifySession(req, res) {
           totalPrice: (item.price.unit_amount / 100) * item.quantity,
         };
       }),
+      totalOrderAmount: line_items.data.reduce((total, item) => {
+        const price = item.price.unit_amount / 100;
+        const quantity = item.quantity;
+        return total + price * quantity;
+      }, 0),
     };
-    console.log(order);
-    //Save order to json
+
     fs.readFile(filePath, (err, data) => {
       if (err) {
         return res.status(404).send("Couldn't get order");
@@ -72,14 +81,30 @@ async function verifySession(req, res) {
           console.log(err);
           return res.status(404).send("Couldn't add order");
         }
-        return res.status(201).send(orders);
+        return res.status(200).json({ verified: true });
       });
     });
-
-    res.status(200).json({ verified: true });
   } catch (error) {
     console.error(error.message);
   }
 }
 
-module.exports = { createCheckoutSession, verifySession };
+async function getOrder(req, res) {
+  try {
+    const ordersData = fs.readFileSync(filePath, "utf-8");
+    const orders = JSON.parse(ordersData);
+    const userEmail = req.session.email;
+
+    const order = orders.filter((order) => order.customer.email === userEmail);
+
+    if (!order) {
+      return res.status(404).json("Order not found");
+    }
+
+    res.status(200).json(order);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+module.exports = { createCheckoutSession, verifySession, getOrder };

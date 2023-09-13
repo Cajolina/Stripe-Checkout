@@ -95,6 +95,7 @@ async function authorize(req, res) {
   if (!req.session.id) {
     return res.status(401).json("You are not logged in");
   }
+
   res.status(200).json(req.session);
 }
 

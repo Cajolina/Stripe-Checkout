@@ -109,5 +109,162 @@
         "totalPrice": 499
       }
     ]
+  },
+  {
+    "created": "2023-09-13",
+    "customer": {
+      "name": "Kent",
+      "email": "Kent@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 1,
+        "price": 89,
+        "totalPrice": 89
+      }
+    ]
+  },
+  {
+    "created": "2023-09-13",
+    "customer": {
+      "name": "Kent",
+      "email": "Kent@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Kokkaffe",
+        "quantity": 3,
+        "price": 69,
+        "totalPrice": 207
+      },
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 1,
+        "price": 89,
+        "totalPrice": 89
+      },
+      {
+        "product": "Hoodie",
+        "quantity": 1,
+        "price": 499,
+        "totalPrice": 499
+      }
+    ]
+  },
+  {
+    "created": "2023-09-13",
+    "customer": {
+      "name": "Plopp",
+      "email": "plopp@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 2,
+        "price": 89,
+        "totalPrice": 178
+      },
+      {
+        "product": "Hoodie",
+        "quantity": 1,
+        "price": 499,
+        "totalPrice": 499
+      }
+    ]
+  },
+  {
+    "created": "2023-09-13",
+    "customer": {
+      "name": "Plopp",
+      "email": "plopp@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Kokkaffe",
+        "quantity": 4,
+        "price": 69,
+        "totalPrice": 276
+      },
+      {
+        "product": "Hoodie",
+        "quantity": 1,
+        "price": 499,
+        "totalPrice": 499
+      },
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 1,
+        "price": 89,
+        "totalPrice": 89
+      }
+    ]
+  },
+  {
+    "created": "2023-09-13",
+    "customer": {
+      "name": "Cajo",
+      "email": "cajolina@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 4,
+        "price": 89,
+        "totalPrice": 356
+      }
+    ]
+  },
+  {
+    "created": "2023-09-13",
+    "customer": {
+      "name": "Cajo",
+      "email": "cajolina@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 1,
+        "price": 89,
+        "totalPrice": 89
+      }
+    ]
+  },
+  {
+    "created": "2023-09-13",
+    "customer": {
+      "name": "Luppe",
+      "email": "Luppe@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 1,
+        "price": 89,
+        "totalPrice": 89
+      }
+    ]
+  },
+  {
+    "created": "2023-09-13",
+    "customer": {
+      "name": "Luppe",
+      "email": "Luppe@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 1,
+        "price": 89,
+        "totalPrice": 89
+      },
+      {
+        "product": "Hoodie",
+        "quantity": 1,
+        "price": 499,
+        "totalPrice": 499
+      }
+    ],
+    "totalOrderAmount": 588
   }
 ]

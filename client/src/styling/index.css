@@ -11,6 +11,22 @@ body {
   background-color: rgb(19, 19, 19);
   font-family: "Bebas Neue", sans-serif;
 }
+
+.HomeContainer::before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../assets/KOLSVART.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1; /* Placera pseudoelementet bakom innehållet i HomeContainer */
+}
+
 a {
   text-decoration: none;
 }
@@ -31,9 +47,27 @@ h3 {
 }
 
 .headerName {
-  text-decoration: none; /* Ta bort eventuell understrykning */
+  text-decoration: none;
   color: black;
-  cursor: default;
+  cursor: pointer;
+}
+
+.header-container {
+  height: 22rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.headerandlogin {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loginandcart {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  padding: 1rem;
 }
 
 button {
@@ -72,8 +106,8 @@ input {
 }
 .exitBtn {
   all: unset;
-  color: #ffffff; /* Lägg till textfärg efter behov */
-  font-size: 20px; /* Justera textstorleken efter behov */
+  color: #ffffff;
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -84,6 +118,9 @@ input {
 
 .cartIcon {
   font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .productImg {
@@ -96,4 +133,109 @@ input {
 }
 .productInCartImg {
   max-width: 100px;
+}
+
+.productListContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*------------HOME SCROLL--------------*/
+section {
+  height: 100vh;
+  position: relative;
+}
+
+.one {
+  height: calc(100vh - 22rem);
+}
+
+.two {
+  background-color: rgb(19, 19, 19);
+  padding-top: 22rem;
+}
+
+.section.one {
+  height: auto;
+}
+
+/*---------ARROWS-----------*/
+.one {
+  display: flex;
+  flex-direction: column; /* Placera innehållet ovanpå varandra */
+  justify-content: flex-end; /* Placera innehållet längst ner */
+  align-items: center; /* Centrera innehållet horisontellt */
+  text-align: center; /* Centrera texten horisontellt */
+  position: relative; /* Gör positionen relativ för att rätt placera pilarna */
+}
+
+.homeProducts {
+  cursor: pointer;
+  margin-bottom: 4rem;
+  margin-right: 22rem;
+  font-size: 6rem;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 0; /* Placera pilarna längst ner i .one */
+  transform: translateX(-50%) translateY(100%); /* Anpassa transformen för pilarna */
+  cursor: pointer;
+  margin-left: 22rem;
+  margin-bottom: 10rem;
+}
+
+.arrow span {
+  display: block;
+  width: 1.5vw;
+  height: 1.5vw;
+  border-bottom: 5px solid white;
+  border-right: 5px solid white;
+  transform: rotate(45deg);
+  margin: -10px;
+  animation: animate 2s infinite;
+}
+
+.arrow span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.arrow span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-20px, -20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(20px, 20px);
+  }
+}
+
+/* ----------SCROLLBAR------------- */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  background-color: rgb(30, 30, 30);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: black;
+}
+
+::-webkit-scrollbar-tumb:hover {
+  background: pink;
 }

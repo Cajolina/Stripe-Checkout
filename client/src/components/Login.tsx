@@ -1,9 +1,6 @@
 import { useUserContext } from "../context/UserContext";
 import { useState } from "react";
 import RegisterUser from "./RegisterUser";
-
-import { BsPersonFill } from "react-icons/bs";
-
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useOrderContext } from "../context/OrderContext";
@@ -38,7 +35,6 @@ function Login() {
         <div>
           <button className="signInBtn" onClick={openDialog}>
             Sign in
-            <BsPersonFill />
           </button>
         </div>
       ) : (

@@ -5,26 +5,33 @@ import { useCartContext } from "../context/CartContext";
 
 function Header() {
   const { cart } = useCartContext();
-
+  const scrollToTopOfPage = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
-    <div>
+    <div className="header-container">
       <div>
         <p className="discountBanner">Discount code: FALL10</p>
       </div>
-      <Link to={"/"}>
-        <h1 className="headerName">KOLSVART</h1>
-      </Link>
-
-      <Login />
-      <span className="cartIcon">
-        {cart.length > 0 ? (
-          <Link to={"/cart"}>
-            <FaCartShopping />
-          </Link>
-        ) : (
-          <FaCartShopping style={{ pointerEvents: "none" }} />
-        )}
-      </span>
+      <div className="headerandlogin">
+        <Link to={"/"}>
+          <h1 className="headerName" onClick={scrollToTopOfPage}>
+            KOLSVART
+          </h1>
+        </Link>
+        <div className="loginandcart">
+          <Login />
+          <div className="cartIcon">
+            {cart.length > 0 ? (
+              <Link to={"/cart"}>
+                <FaCartShopping />
+              </Link>
+            ) : (
+              <FaCartShopping style={{ pointerEvents: "none" }} />
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

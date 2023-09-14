@@ -8,6 +8,7 @@ import CartProvider from "./context/CartContext";
 import CheckoutProvider from "./context/CheckoutContext";
 import UserOrders from "./components/UserOrders";
 import OrderProvider from "./context/OrderContext";
+
 function App() {
   return (
     <ProductProvider>

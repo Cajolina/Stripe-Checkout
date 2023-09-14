@@ -10,10 +10,15 @@ import { IProduct, useProductContext } from "./ProductContext";
 interface CartContext {
   cart: CartItem[];
   addToCart: (product: IProduct) => void;
+  productsInCart: IProductsInCart[];
+  totalSum: number;
 }
 
 export interface CartItem {
   product: string;
+  quantity: number;
+}
+interface IProductsInCart extends IProduct {
   quantity: number;
 }
 
@@ -22,6 +27,7 @@ const defaultValues = {
   addToCart: () => {},
   productsInCart: [],
   totalSum: 0,
+  setTotalSum: () => {},
 };
 
 const CartContext = createContext<CartContext>(defaultValues);
@@ -30,8 +36,8 @@ export const useCartContext = () => useContext(CartContext);
 
 const CartProvider = ({ children }: PropsWithChildren<object>) => {
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [productsInCart, setProductsInCart] = useState([]);
-  const [totalSum, setTotalSum] = useState();
+  const [productsInCart, setProductsInCart] = useState<IProductsInCart[]>([]);
+  const [totalSum, setTotalSum] = useState(0);
 
   const { productList } = useProductContext();
   //Kolla om cartItems lagras i cart
@@ -54,49 +60,49 @@ const CartProvider = ({ children }: PropsWithChildren<object>) => {
     }
   };
 
-  // const findProductsByDefaultPrice = () => {
-  //   const productsInCart = cart.map((item) => item.product);
-
-  //   const matchingProducts = productList.filter((product) =>
-  //     productsInCart.includes(product.default_price)
-  //   );
-
-  //   console.log(matchingProducts);
-  //   setProductsInCart(matchingProducts);
-  //   return matchingProducts;
-  // };
   const findProductsByDefaultPrice = () => {
+    // Extract the list of products in the cart
     const productsInCart = cart.map((item) => item.product);
+    // Initialize an accumulator object to collect products and calculate total price.
+    const accumulator: { products: IProductsInCart[]; totalPrice: number } = {
+      products: [], // Initialize products as an empty array to store products
+      totalPrice: 0, //Initialize totalPrice to keep track of the total price
+    };
 
-    // Använd .reduce() för att skapa ett objekt med products och quantity
+    //Use reduce() to create an object with products and quantity
     const result = productList.reduce(
       (acc, product) => {
+        // Check if the product is in the cart
         if (productsInCart.includes(product.default_price)) {
+          // Find the corresponding cart item for this product
           const cartItem = cart.find(
             (item) => item.product === product.default_price
           );
+
+          // Determine the quantity (defaults to 0 if not found)
           const quantity = cartItem ? cartItem.quantity : 0;
 
-          // Lägg till produkten med quantity i resultatet
+          // Add the product with quantity to the accumulator's products array
           acc.products.push({
             ...product,
             quantity,
           });
 
-          // Beräkna och lägg till priset för den här produkten i totalpriset
+          // Calculate and add the price for this product to the total price
           acc.totalPrice += (quantity * product.price) / 100;
         }
-        return acc;
+        return acc; // Return the updated accumulator for the next iteration
       },
-      { products: [], totalPrice: 0 } // Initialvärde för resultatet inklusive totalpriset
+      accumulator // Pass the initialized accumulator object as the initial value
     );
 
     console.log(result.products);
-    console.log("Totalpris:", result.totalPrice); // Logga totalpriset
+    console.log("Totalpris:", result.totalPrice);
+    console.log(result, "result");
 
     setProductsInCart(result.products);
     setTotalSum(result.totalPrice);
-    return result.products;
+    return result;
   };
 
   return (

@@ -39,7 +39,6 @@ function Login() {
         </div>
       ) : (
         <div>
-          <p>inloggad som: {loginUser.name}</p>
           <Link to={"/"}>
             <button onClick={logoutUser}>logout</button>
           </Link>
@@ -47,6 +46,8 @@ function Login() {
           <Link to={"/userorders"}>
             <button onClick={getUserOrders}>Userprofile</button>
           </Link>
+
+          <p className="loggedinUserText">Loggedin user: {loginUser.name}</p>
         </div>
       )}
 
@@ -73,6 +74,7 @@ function Login() {
             placeholder="password"
           />
           <button
+            className="modalSignInBtn"
             onClick={() => {
               fetchLoginUser({ email, password });
               closeDialog();
@@ -83,7 +85,7 @@ function Login() {
 
           {showRegister && <RegisterUser />}
           {!showRegister && (
-            <p className="registerHereBt" onClick={handleRegisterClick}>
+            <p className="registerHere" onClick={handleRegisterClick}>
               Register here
             </p>
           )}

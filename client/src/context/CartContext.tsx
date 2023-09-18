@@ -96,10 +96,6 @@ const CartProvider = ({ children }: PropsWithChildren<object>) => {
       accumulator // Pass the initialized accumulator object as the initial value
     );
 
-    console.log(result.products);
-    console.log("Totalpris:", result.totalPrice);
-    console.log(result, "result");
-
     setProductsInCart(result.products);
     setTotalSum(result.totalPrice);
     return result;

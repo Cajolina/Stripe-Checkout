@@ -200,5 +200,17 @@
     "email": "plopp@gmail.com",
     "name": "Plopp",
     "password": "$2b$10$f5dWc51nAohnrkDUnEJ4r.XtX8cxGRr2HChdPGTz1VBnSKjNAFwkW"
+  },
+  {
+    "id": "cus_Of7aBACSfd5l74",
+    "email": "hejdå@gmail.com",
+    "name": "Hejdå",
+    "password": "$2b$10$nZwFvLIFCM9ALoTSu7A9yulj92/hwkhlRy5zRIk4k5wKEpmuMQf5K"
+  },
+  {
+    "id": "cus_Of8IyRx3yaOiFy",
+    "email": "timpa@gmail.com",
+    "name": "timpa",
+    "password": "$2b$10$Ggg/HbcFLwgOVjpPQgUSSu4SbrPuFWN3K86BO2zsO1YeDitxcSexi"
   }
 ]

@@ -28,6 +28,10 @@ const CheckoutProvider = ({ children }: PropsWithChildren<object>) => {
     setCheckoutErrorMessage("");
 
     try {
+      if (cart.length === 0) {
+        setCheckoutErrorMessage("Cart is empty");
+        return;
+      }
       const response = await fetch("api/create_checkout_session", {
         method: "POST",
         headers: {
@@ -40,11 +44,11 @@ const CheckoutProvider = ({ children }: PropsWithChildren<object>) => {
 
         return;
       }
+
       const { url, sessionId } = await response.json();
       localStorage.setItem("session-id", sessionId);
       window.location = url;
     } catch (error) {
-      setCheckoutErrorMessage("You must be logged in to proceed to checkout");
       console.log(error);
     }
   }
@@ -61,7 +65,7 @@ const CheckoutProvider = ({ children }: PropsWithChildren<object>) => {
         body: JSON.stringify({ sessionId }),
       });
       const { verified } = await response.json();
-      //nått åt detta håll. flödet är det viktiga
+
       if (verified) {
         setIsPaymentVerified(true);
         localStorage.removeItem("session-id");

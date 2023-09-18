@@ -64,5 +64,49 @@
       }
     ],
     "totalOrderAmount": 365
+  },
+  {
+    "created": "2023-09-18",
+    "customer": {
+      "name": "Hejdå",
+      "email": "hejdå@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Hoodie",
+        "quantity": 2,
+        "price": 499,
+        "totalPrice": 998
+      },
+      {
+        "product": "Kokkaffe",
+        "quantity": 1,
+        "price": 69,
+        "totalPrice": 69
+      },
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 1,
+        "price": 89,
+        "totalPrice": 89
+      }
+    ],
+    "totalOrderAmount": 1156
+  },
+  {
+    "created": "2023-09-18",
+    "customer": {
+      "name": "timpa",
+      "email": "timpa@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Hoodie",
+        "quantity": 2,
+        "price": 499,
+        "totalPrice": 998
+      }
+    ],
+    "totalOrderAmount": 998
   }
 ]

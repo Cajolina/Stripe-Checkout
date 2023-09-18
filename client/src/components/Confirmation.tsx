@@ -9,14 +9,18 @@ function Confirmation() {
     verifyPayment();
   }, []);
   return isPaymentVerified ? (
-    <div>
-      Thank you for your purchase <BsFillBalloonHeartFill />
-      <Link to={"/"}>
-        <IoHome />
-      </Link>
+    <div className="confirmationOKContainer">
+      <h2>
+        Thank you for your purchase <BsFillBalloonHeartFill />
+        <Link to={"/"}>
+          <IoHome />
+        </Link>
+      </h2>
     </div>
   ) : (
-    <h2>Något gick fel med betalningen</h2>
+    <div className="confirmationNotOkContainer">
+      <h2>Något gick fel med betalningen</h2>
+    </div>
   );
 }
 

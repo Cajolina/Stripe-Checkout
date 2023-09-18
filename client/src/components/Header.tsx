@@ -19,16 +19,18 @@ function Header() {
             KOLSVART
           </h1>
         </Link>
-        <div className="loginandcart">
-          <Login />
-          <div className="cartIcon">
-            {cart.length > 0 ? (
-              <Link to={"/cart"}>
-                <FaCartShopping />
-              </Link>
-            ) : (
-              <FaCartShopping style={{ pointerEvents: "none" }} />
-            )}
+        <div>
+          <div className="loginandcart">
+            <Login />
+            <div className="cartIcon centered-cart">
+              {cart.length > 0 ? (
+                <Link to={"/cart"}>
+                  <FaCartShopping />
+                </Link>
+              ) : (
+                <FaCartShopping style={{ pointerEvents: "none" }} />
+              )}
+            </div>
           </div>
         </div>
       </div>

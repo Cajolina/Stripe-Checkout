@@ -45,7 +45,13 @@ h2 {
 h3 {
   font-size: 3rem;
 }
+p {
+  font-size: 2rem;
+}
 
+ul {
+  list-style: none;
+}
 .headerName {
   text-decoration: none;
   color: black;
@@ -65,14 +71,17 @@ h3 {
 
 .loginandcart {
   display: flex;
-  justify-content: center;
-  align-items: baseline;
+
   padding: 1rem;
 }
 
 button {
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.7rem;
+  padding: 0 0.4rem 0 0.4rem;
+  margin: 0.5rem;
+  background-color: rgba(62, 62, 62, 0.759);
+  border-radius: 0.4rem;
 }
 
 .discountBanner {
@@ -85,15 +94,23 @@ button {
 
 input {
   font-family: "Bebas Neue", sans-serif;
+  font-size: 1.7rem;
 }
+
+/*-----------LOGIN MODAL---------*/
 .loginModal {
   position: absolute;
-  top: 50%;
+  top: 35rem;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(68, 66, 66);
   padding: 2rem;
   border-radius: 0.5rem;
+}
+
+.modalSignInBtn {
+  background-color: #bfbebe;
+  cursor: pointer;
 }
 
 .signInBtn {
@@ -111,16 +128,35 @@ input {
   cursor: pointer;
 }
 
-.registerHereBt {
+.registerHere {
   cursor: pointer;
   width: 30%;
+  font-size: 2rem;
+  padding-top: 1rem;
+}
+
+.modalRegisterBtn {
+  background-color: #bfbebe;
+  cursor: pointer;
+}
+
+.registerUserContainer {
+  padding-top: 3rem;
 }
 
 .cartIcon {
   font-size: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0.5rem;
+}
+.cart-icon {
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+.loggedinUserText {
+  color: #797979;
+  font-size: 1.5rem;
+  padding-left: 1rem;
 }
 
 .productImg {
@@ -128,9 +164,45 @@ input {
   max-height: 300px;
 }
 
-.orderCard {
+/*---------CART PAGE------------*/
+.cartContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+div.error-message {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inCartContainer {
+  border: 2px solid #757474;
+  width: 50%;
+}
+
+.inCartContainer p {
+  font-size: 2rem;
+}
+
+.cartCard {
+  display: flex;
+  justify-content: flex-start;
   border: 2px solid #757474;
 }
+
+.textCartCard {
+  padding-left: 2rem;
+}
+
+.checkoutBtn {
+  background-color: #bfbebe;
+  cursor: pointer;
+}
+
 .productInCartImg {
   max-width: 100px;
 }
@@ -140,6 +212,29 @@ input {
   justify-content: space-around;
 }
 
+.confirmationOKContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.confirmationNotOkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.orderContainer {
+  padding: 2rem;
+}
+.orderCard {
+  border: 2px solid #757474;
+  padding: 1rem;
+  padding-left: 2rem;
+  width: 20%;
+}
 /*------------HOME SCROLL--------------*/
 section {
   height: 100vh;
@@ -162,11 +257,11 @@ section {
 /*---------ARROWS-----------*/
 .one {
   display: flex;
-  flex-direction: column; /* Placera innehållet ovanpå varandra */
-  justify-content: flex-end; /* Placera innehållet längst ner */
-  align-items: center; /* Centrera innehållet horisontellt */
-  text-align: center; /* Centrera texten horisontellt */
-  position: relative; /* Gör positionen relativ för att rätt placera pilarna */
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  position: relative;
 }
 
 .homeProducts {

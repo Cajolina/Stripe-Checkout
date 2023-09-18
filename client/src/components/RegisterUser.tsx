@@ -14,7 +14,7 @@ function RegisterUser() {
   } = useUserContext();
 
   return (
-    <div>
+    <div className="registerUserContainer">
       <h2>Register User</h2>
       <div>
         <p>name:</p>
@@ -40,6 +40,7 @@ function RegisterUser() {
         />
 
         <button
+          className="modalRegisterBtn"
           onClick={() => {
             registerUserFetch(name, email, password);
             closeDialog();

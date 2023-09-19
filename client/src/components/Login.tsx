@@ -1,5 +1,4 @@
 import { useUserContext } from "../context/UserContext";
-import { useState } from "react";
 import RegisterUser from "./RegisterUser";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -17,17 +16,12 @@ function Login() {
     loginUser,
     closeDialog,
     logoutUser,
-
     errorMessage,
+    handleRegisterClick,
+    showRegister,
   } = useUserContext();
 
   const { getUserOrders } = useOrderContext();
-
-  const [showRegister, setShowRegister] = useState(false);
-
-  const handleRegisterClick = () => {
-    setShowRegister(true);
-  };
 
   return (
     <div>
@@ -77,7 +71,6 @@ function Login() {
             className="modalSignInBtn"
             onClick={() => {
               fetchLoginUser({ email, password });
-              closeDialog();
             }}
           >
             Sign in

@@ -24,7 +24,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: -1; /* Placera pseudoelementet bakom innehållet i HomeContainer */
+  z-index: -1;
 }
 
 a {
@@ -95,6 +95,10 @@ button {
 input {
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.7rem;
+}
+
+.productsTitle {
+  padding: 0 0 3rem 3rem;
 }
 
 /*-----------LOGIN MODAL---------*/
@@ -273,8 +277,8 @@ section {
 
 .arrow {
   position: absolute;
-  bottom: 0; /* Placera pilarna längst ner i .one */
-  transform: translateX(-50%) translateY(100%); /* Anpassa transformen för pilarna */
+  bottom: 0;
+  transform: translateX(-50%) translateY(100%);
   cursor: pointer;
   margin-left: 22rem;
   margin-bottom: 10rem;

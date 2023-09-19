@@ -38,7 +38,8 @@ export interface IUserContext {
   openDialog: () => void;
   closeDialog: () => void;
   logoutUser: () => void;
-  // getUserOrders: () => void;
+  handleRegisterClick: () => void;
+  showRegister: boolean;
 }
 
 const defaultValues = {
@@ -59,7 +60,8 @@ const defaultValues = {
   openDialog: () => {},
   closeDialog: () => {},
   logoutUser: () => {},
-  // getUserOrders: async () => Promise.resolve(),
+  handleRegisterClick: () => {},
+  showRegister: false,
 };
 
 const UserContext = createContext<IUserContext>(defaultValues);
@@ -73,7 +75,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
+  const [showRegister, setShowRegister] = useState(false);
   const { setCheckoutErrorMessage } = useCheckoutContext();
 
   //modal login/register logic
@@ -86,6 +88,12 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     setEmail("");
     setPassword("");
     setName("");
+    setShowRegister(false);
+    setErrorMessage("");
+    setCheckoutErrorMessage("");
+  };
+  const handleRegisterClick = () => {
+    setShowRegister(true);
   };
 
   useEffect(() => {
@@ -103,17 +111,17 @@ const UserProvider = ({ children }: PropsWithChildren) => {
       });
       const data = await response.json();
 
-      console.log(data.email);
-
       if (!response.ok) {
         setErrorMessage("Wrong email or password");
-        // setShowRegister(true);
+
         return console.log("gick inte att fetcha");
       }
-
+      if (response.ok) {
+        closeDialog();
+      }
       setLoginUser(data);
+
       setCheckoutErrorMessage("");
-      console.log(loginUser);
     } catch (error) {
       setErrorMessage("Couldn´t login");
       console.log(error);
@@ -134,11 +142,21 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         body: JSON.stringify({ name, email, password }),
       });
       const data = await response.json();
-      setLoginUser(data);
-      if (!response.ok) {
+
+      if (response.status === 400) {
         setErrorMessage("Gick inte att skapa");
         return console.log("gick inte att fetcha");
       }
+      if (response.status === 403) {
+        setErrorMessage("email already exists");
+        setLoginUser(null);
+        return console.log("user already exist");
+      }
+
+      if (response.ok) {
+        closeDialog();
+      }
+      setLoginUser(data);
     } catch (error) {
       setErrorMessage("Couldn´t register");
     }
@@ -169,7 +187,6 @@ const UserProvider = ({ children }: PropsWithChildren) => {
       const response = await fetch("/api/authorize");
       if (response.status === 200) {
         const data = await response.json();
-        console.log(data);
 
         setLoginUser(data);
       } else {
@@ -179,16 +196,6 @@ const UserProvider = ({ children }: PropsWithChildren) => {
       console.log(error, "gick inte att fetcha");
     }
   };
-
-  // const getUserOrders = async () => {
-  //   try {
-  //     const response = await fetch(`/api/getOrder`);
-  //     const data = await response.json();
-  //     console.log("Get user orders:", data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <UserContext.Provider
@@ -210,6 +217,9 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         openDialog,
         closeDialog,
         logoutUser,
+        handleRegisterClick,
+        showRegister,
+
         // getUserOrders,
       }}
     >

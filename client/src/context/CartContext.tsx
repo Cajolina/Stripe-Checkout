@@ -40,15 +40,12 @@ const CartProvider = ({ children }: PropsWithChildren<object>) => {
   const [totalSum, setTotalSum] = useState(0);
 
   const { productList } = useProductContext();
-  //Kolla om cartItems lagras i cart
+
   useEffect(() => {
-    console.log(cart, "här är cart");
     findProductsByDefaultPrice();
   }, [cart]);
 
   const addToCart = (product: IProduct) => {
-    console.log(product, "här är product");
-
     const existingItemInCart = cart.find(
       (item: CartItem) => item.product === product.default_price
     );
@@ -87,7 +84,6 @@ const CartProvider = ({ children }: PropsWithChildren<object>) => {
             ...product,
             quantity,
           });
-
           // Calculate and add the price for this product to the total price
           acc.totalPrice += (quantity * product.price) / 100;
         }

@@ -17,17 +17,26 @@ function getAllUsers(req, res) {
 }
 async function registerUser(req, res) {
   try {
+    const existingUserInStripe = await stripe.customers.search({
+      query: `email:\'${req.body.email}\'`,
+    });
+
+    if (existingUserInStripe.data.length > 0) {
+      console.log("User already exists");
+      return res.status(403).json("User already exists");
+    }
     const dataInput = req.body;
     const hashedPassword = await bcrypt.hash(dataInput.password, 10);
 
-    // Läs användardata från filen
+    // Läs användardata från jsonfilen
     const data = await fs.promises.readFile(filePath);
     const users = JSON.parse(data);
 
     // Kontrollera om användaren redan finns
     const userExists = users.find((user) => user.email === dataInput.email);
     if (userExists) {
-      return res.status(404).send("Email already exists");
+      console.log("Email already exists in json");
+      return res.status(403).send("Email already exists");
     }
 
     // Skapa en ny användare
@@ -67,10 +76,7 @@ async function login(req, res) {
       if (!userInDb || !(await bcrypt.compare(password, userInDb.password))) {
         return res.status(401).json("Wrong password or username");
       }
-      // const user = userInDb;
-      // user.id = userInDb.id;
-      // delete user.password;
-      // Check if user already is logged in
+
       if (req.session.id) {
         return res.status(200).json(userInDb);
       }
@@ -79,7 +85,7 @@ async function login(req, res) {
       res.status(200).json(userInDb);
     });
   } catch (error) {
-    console.log(error.message, "Det va inte bra ");
+    console.log(error.message);
   }
 }
 

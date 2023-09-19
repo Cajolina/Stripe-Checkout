@@ -6,14 +6,16 @@ function ProductList() {
   const { addToCart } = useCartContext();
   return (
     <div>
-      <h2>Products</h2>
+      <h2 className="productsTitle">Products</h2>
 
       <div className="productListContainer">
         {productList.map((product) => (
           <div key={product.id}>
             <h3>{product.name}</h3>
             <img className="productImg" src={product.image} alt="" />
-            <h3>{product.price / 100} </h3>
+            <h3>
+              {product.price / 100} {product.currency}
+            </h3>
             <button onClick={() => addToCart(product)}>Add to cart</button>
           </div>
         ))}

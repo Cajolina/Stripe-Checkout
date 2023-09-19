@@ -11,6 +11,7 @@ export interface IProduct {
   name: string;
   description: string;
   price: number;
+  currency: string;
   image: string;
   default_price: string;
 }
@@ -45,7 +46,6 @@ const ProductProvider = ({ children }: PropsWithChildren) => {
         return console.log("Couldn´t fetch products");
       }
       setProductList(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }

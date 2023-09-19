@@ -1,11 +1,17 @@
 [
   {
-    "created": "2023-09-13",
+    "created": "2023-09-19",
     "customer": {
-      "name": "Luppe",
-      "email": "Luppe@gmail.com"
+      "name": "Cajo",
+      "email": "cajolina@gmail.com"
     },
     "products": [
+      {
+        "product": "Kokkaffe - blåbär",
+        "quantity": 2,
+        "price": 79,
+        "totalPrice": 158
+      },
       {
         "product": "Kokkaffe - Hjortron",
         "quantity": 1,
@@ -17,59 +23,21 @@
         "quantity": 1,
         "price": 499,
         "totalPrice": 499
-      }
-    ],
-    "totalOrderAmount": 588
-  },
-  {
-    "created": "2023-09-14",
-    "customer": {
-      "name": "Cajo",
-      "email": "cajolina@gmail.com"
-    },
-    "products": [
-      {
-        "product": "Kokkaffe - Hjortron",
-        "quantity": 3,
-        "price": 89,
-        "totalPrice": 267
       },
-      {
-        "product": "Hoodie",
-        "quantity": 1,
-        "price": 499,
-        "totalPrice": 499
-      }
-    ],
-    "totalOrderAmount": 766
-  },
-  {
-    "created": "2023-09-14",
-    "customer": {
-      "name": "Cajo",
-      "email": "cajolina@gmail.com"
-    },
-    "products": [
       {
         "product": "Kokkaffe",
-        "quantity": 4,
+        "quantity": 3,
         "price": 69,
-        "totalPrice": 276
-      },
-      {
-        "product": "Kokkaffe - Hjortron",
-        "quantity": 1,
-        "price": 89,
-        "totalPrice": 89
+        "totalPrice": 207
       }
     ],
-    "totalOrderAmount": 365
+    "totalOrderAmount": 953
   },
   {
-    "created": "2023-09-18",
+    "created": "2023-09-19",
     "customer": {
-      "name": "Hejdå",
-      "email": "hejdå@gmail.com"
+      "name": "Cajo",
+      "email": "cajolina@gmail.com"
     },
     "products": [
       {
@@ -77,6 +45,34 @@
         "quantity": 2,
         "price": 499,
         "totalPrice": 998
+      },
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 1,
+        "price": 89,
+        "totalPrice": 89
+      }
+    ],
+    "totalOrderAmount": 1087
+  },
+  {
+    "created": "2023-09-19",
+    "customer": {
+      "name": "Luppe",
+      "email": "luppe@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Kokkaffe - blåbär",
+        "quantity": 3,
+        "price": 79,
+        "totalPrice": 237
+      },
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 1,
+        "price": 89,
+        "totalPrice": 89
       },
       {
         "product": "Kokkaffe",
@@ -85,28 +81,102 @@
         "totalPrice": 69
       },
       {
+        "product": "Hoodie",
+        "quantity": 1,
+        "price": 499,
+        "totalPrice": 499
+      }
+    ],
+    "totalOrderAmount": 894
+  },
+  {
+    "created": "2023-09-19",
+    "customer": {
+      "name": "Lina",
+      "email": "lina@gmail.com"
+    },
+    "products": [
+      {
+        "product": "Kokkaffe - blåbär",
+        "quantity": 1,
+        "price": 79,
+        "totalPrice": 79
+      },
+      {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 2,
+        "price": 89,
+        "totalPrice": 178
+      },
+      {
+        "product": "Kokkaffe",
+        "quantity": 1,
+        "price": 69,
+        "totalPrice": 69
+      },
+      {
+        "product": "Hoodie",
+        "quantity": 1,
+        "price": 499,
+        "totalPrice": 499
+      }
+    ],
+    "totalOrderAmount": 825
+  },
+  {
+    "created": "2023-09-19",
+    "customer": {
+      "name": "Majsan",
+      "email": "majsan@gmail.com"
+    },
+    "products": [
+      {
         "product": "Kokkaffe - Hjortron",
         "quantity": 1,
         "price": 89,
         "totalPrice": 89
+      },
+      {
+        "product": "Kokkaffe - blåbär",
+        "quantity": 1,
+        "price": 79,
+        "totalPrice": 79
+      },
+      {
+        "product": "Hoodie",
+        "quantity": 1,
+        "price": 499,
+        "totalPrice": 499
       }
     ],
-    "totalOrderAmount": 1156
+    "totalOrderAmount": 667
   },
   {
-    "created": "2023-09-18",
+    "created": "2023-09-19",
     "customer": {
-      "name": "timpa",
-      "email": "timpa@gmail.com"
+      "name": "Kenta",
+      "email": "kenta@gmail.com"
     },
     "products": [
       {
+        "product": "Kokkaffe - Hjortron",
+        "quantity": 1,
+        "price": 89,
+        "totalPrice": 89
+      },
+      {
         "product": "Hoodie",
-        "quantity": 2,
+        "quantity": 1,
         "price": 499,
-        "totalPrice": 998
+        "totalPrice": 499
+      },
+      {
+        "product": "Kokkaffe",
+        "quantity": 1,
+        "price": 69,
+        "totalPrice": 69
       }
     ],
-    "totalOrderAmount": 998
+    "totalOrderAmount": 657
   }
 ]

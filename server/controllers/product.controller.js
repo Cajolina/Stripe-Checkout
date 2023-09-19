@@ -11,6 +11,7 @@ async function getAllProducts(req, res) {
     name: product.name,
     description: product.description,
     price: product.default_price.unit_amount,
+    currency: product.default_price.currency,
     image: product.images,
     default_price: product.default_price.id,
   }));

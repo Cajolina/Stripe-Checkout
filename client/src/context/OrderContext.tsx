@@ -36,7 +36,6 @@ const OrderProvider = ({ children }: PropsWithChildren<object>) => {
       const response = await fetch(`/api/getOrder`);
       const data = await response.json();
       setUserOrderList(data);
-      console.log("Get user orders:", data);
     } catch (error) {
       console.log(error);
     }

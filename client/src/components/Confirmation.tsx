@@ -19,7 +19,7 @@ function Confirmation() {
     </div>
   ) : (
     <div className="confirmationNotOkContainer">
-      <h2>Något gick fel med betalningen</h2>
+      <h2>Something went wrong with the payment</h2>
     </div>
   );
 }

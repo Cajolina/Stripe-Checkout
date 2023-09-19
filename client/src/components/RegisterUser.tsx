@@ -8,7 +8,6 @@ function RegisterUser() {
     password,
     email,
     name,
-    closeDialog,
 
     registerUserFetch,
   } = useUserContext();
@@ -43,7 +42,6 @@ function RegisterUser() {
           className="modalRegisterBtn"
           onClick={() => {
             registerUserFetch(name, email, password);
-            closeDialog();
           }}
         >
           Register

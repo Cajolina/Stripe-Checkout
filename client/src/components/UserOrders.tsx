@@ -13,7 +13,7 @@ function UserOrders() {
       <div className="orderContainer">
         <h2>My orders</h2>
         {userOrderList.length === 0 ? (
-          <p>Du har inga lagda ordrar ännu</p>
+          <p>You don't have any placed orders yet</p>
         ) : (
           userOrderList.map((orderItem, index) => (
             <div key={index} className="orderCard">

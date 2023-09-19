@@ -38,13 +38,18 @@ function Cart() {
             </div>
             <div className="textCartCard">
               <h3>{product.name}</h3>
-              <p>{product.price / 100} each</p>
+              <p>
+                {product.price / 100} {product.currency} each
+              </p>
               <h3>Quantity: {product.quantity}</h3>
-              <p> Price total: {(product.price / 100) * product.quantity} </p>
+              <p>
+                Price total: {(product.price / 100) * product.quantity}
+                {product.currency}
+              </p>
             </div>
           </div>
         ))}
-        <h3>Totalsum : {totalSum}</h3>
+        <h3>Totalsum : {totalSum} SEK</h3>
       </div>
       <button className="checkoutBtn" onClick={handleCheckout}>
         To checkout
